@@ -323,4 +323,7 @@ Devise.setup do |config|
   config.remember_for = 1.day.to_i
   config.timeout_in = 1.day.to_i
   config.navigational_formats = []
+  config.jwt do |jwt|
+    jwt.secret = "071fb80f30145d79d392d13464a45ccd20753a32b30dac67754723fd7db27d9a182a3fc79640ae41d9516a88ad9e63c4aa2853eba9c03ab6759afeb5e274aecc"
+  end
 end
