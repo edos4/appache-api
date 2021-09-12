@@ -16,82 +16,14 @@ ActiveRecord::Schema.define(version: 2021_09_12_194049) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "leads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "source"
-    t.string "firstname"
-    t.string "lastname"
-    t.string "phone"
-    t.string "status"
-    t.text "notes"
-    t.uuid "assigned"
-    t.date "sale_date"
-    t.string "deal"
-    t.string "deal_status"
-    t.date "deal_date"
-    t.float "lbe_price"
-    t.date "lbe_start_date"
-    t.uuid "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "staffs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.uuid "user_id"
-    t.date "date_hired"
-    t.string "department"
-    t.string "position"
-    t.string "address"
-    t.string "meeting_link"
-    t.date "birthday"
-    t.date "last_day"
-    t.float "pay_rate"
-    t.float "total_earned"
-    t.string "employment_contract"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "students", force: :cascade do |t|
+  create_table "students", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.integer "age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "studio_managers", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.uuid "studio_id"
-    t.uuid "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "studio_owners", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.uuid "user_id"
-    t.string "mobile_number"
-    t.string "facebook"
-    t.string "linkedin"
-    t.uuid "studio_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "studios", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.string "location"
-    t.string "email"
-    t.string "address"
-    t.string "abn"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

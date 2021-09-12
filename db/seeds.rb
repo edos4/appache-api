@@ -8,10 +8,10 @@ if User.where(email: "admin@example.com").blank?
   user.save!
   user.confirm
 
-  staff1 = Staff.create!(
-    firstname: "Gero",
-    lastname: "Nimo",
-    user_id: user.id,
-    position: 'admin'
-  )
+#  staff1 = Staff.create!(
+#    firstname: "Gero",
+#    lastname: "Nimo",
+#    user_id: user.id,
+#    position: 'admin'
+#  )
 end
