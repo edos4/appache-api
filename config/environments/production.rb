@@ -104,7 +104,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.action_mailer.delivery_method = :smtp
-  host = 'localhost' #replace with your own url
+  host = 'https://appache-api.herokuapp.com' #replace with your own url
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
