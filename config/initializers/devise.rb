@@ -309,7 +309,7 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
   config.jwt do |jwt|
-    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+    jwt.secret = "071fb80f30145d79d392d13464a45ccd20753a32b30dac67754723fd7db27d9a182a3fc79640ae41d9516a88ad9e63c4aa2853eba9c03ab6759afeb5e274aecc"
     warn('warning: jwt.secret can not be nil') if jwt.secret.nil?
     #  You need to tell which requests will dispatch tokens for the user that has been previously
     #  authenticated (usually through some other warden strategy, such as one requiring username and email parameters).
@@ -323,7 +323,4 @@ Devise.setup do |config|
   config.remember_for = 1.day.to_i
   config.timeout_in = 1.day.to_i
   config.navigational_formats = []
-  config.jwt do |jwt|
-    jwt.secret = "071fb80f30145d79d392d13464a45ccd20753a32b30dac67754723fd7db27d9a182a3fc79640ae41d9516a88ad9e63c4aa2853eba9c03ab6759afeb5e274aecc"
-  end
 end
