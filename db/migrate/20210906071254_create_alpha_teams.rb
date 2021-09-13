@@ -1,4 +1,4 @@
-class CreateAlphaTeams < ActiveRecord::Migration[6.1]
+class CreateAlphaTeams < ActiveRecord::Migration[6.0]
   def change
     create_table :alpha_teams do |t|
       t.string :firstname

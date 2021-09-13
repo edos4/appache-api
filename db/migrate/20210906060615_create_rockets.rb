@@ -1,4 +1,4 @@
-class CreateRockets < ActiveRecord::Migration[6.1]
+class CreateRockets < ActiveRecord::Migration[6.0]
   def change
     create_table :rockets do |t|
       t.string :firstname

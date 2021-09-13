@@ -1,4 +1,4 @@
-class CreateStudios < ActiveRecord::Migration[6.1]
+class CreateStudios < ActiveRecord::Migration[6.0]
   def change
     create_table :studios, id: :uuid do |t|
       t.string :name

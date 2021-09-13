@@ -1,4 +1,4 @@
-class CreateStudioManagers < ActiveRecord::Migration[6.1]
+class CreateStudioManagers < ActiveRecord::Migration[6.0]
   def change
     create_table :studio_managers do |t|
       t.string :firstname

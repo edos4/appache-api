@@ -1,4 +1,4 @@
-class CreateLeads < ActiveRecord::Migration[6.1]
+class CreateLeads < ActiveRecord::Migration[6.0]
   def change
     create_table :leads, id: :uuid do |t|
       t.string :source

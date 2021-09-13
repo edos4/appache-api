@@ -16,9 +16,168 @@ ActiveRecord::Schema.define(version: 2021_09_12_194049) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
+  create_table "accountings", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.uuid "user_id"
+    t.date "date_hired"
+    t.string "department"
+    t.string "position"
+    t.string "address"
+    t.string "contact_number"
+    t.string "meeting_link"
+    t.date "birthday"
+    t.date "last_day"
+    t.float "pay_rate"
+    t.float "total_earned"
+    t.string "employment_contract"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "alpha_teams", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.uuid "user_id"
+    t.date "date_hired"
+    t.string "department"
+    t.string "position"
+    t.string "address"
+    t.string "contact_number"
+    t.string "meeting_link"
+    t.date "birthday"
+    t.date "last_day"
+    t.float "pay_rate"
+    t.float "total_earned"
+    t.string "employment_contract"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string "name"
+    t.text "details"
+    t.string "status"
+    t.string "attachments"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "tags"
+    t.float "total_spent"
+    t.string "fb_leads"
+    t.string "cpl"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "leads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "source"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone"
+    t.string "status"
+    t.text "notes"
+    t.uuid "assigned"
+    t.date "sale_date"
+    t.string "deal"
+    t.string "deal_status"
+    t.date "deal_date"
+    t.float "lbe_price"
+    t.date "lbe_start_date"
+    t.uuid "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pit_crews", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.uuid "user_id"
+    t.date "date_hired"
+    t.string "department"
+    t.string "position"
+    t.string "address"
+    t.string "contact_number"
+    t.string "meeting_link"
+    t.date "birthday"
+    t.date "last_day"
+    t.float "pay_rate"
+    t.float "total_earned"
+    t.string "employment_contract"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rockets", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.uuid "user_id"
+    t.date "date_hired"
+    t.string "department"
+    t.string "position"
+    t.string "address"
+    t.string "contact_number"
+    t.string "meeting_link"
+    t.date "birthday"
+    t.date "last_day"
+    t.float "pay_rate"
+    t.float "total_earned"
+    t.string "employment_contract"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "staffs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.uuid "user_id"
+    t.date "date_hired"
+    t.string "department"
+    t.string "position"
+    t.string "address"
+    t.string "meeting_link"
+    t.date "birthday"
+    t.date "last_day"
+    t.float "pay_rate"
+    t.float "total_earned"
+    t.string "employment_contract"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "students", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "studio_managers", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.uuid "studio_id"
+    t.uuid "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "studio_owners", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.uuid "user_id"
+    t.string "mobile_number"
+    t.string "facebook"
+    t.string "linkedin"
+    t.uuid "studio_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "studios", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "email"
+    t.string "address"
+    t.string "abn"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -37,6 +196,37 @@ ActiveRecord::Schema.define(version: 2021_09_12_194049) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wolves", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.uuid "user_id"
+    t.date "date_hired"
+    t.string "department"
+    t.string "position"
+    t.string "address"
+    t.string "contact_number"
+    t.string "meeting_link"
+    t.date "birthday"
+    t.date "last_day"
+    t.float "pay_rate"
+    t.float "total_earned"
+    t.string "employment_contract"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "wolves_comissions", force: :cascade do |t|
+    t.integer "total_calls"
+    t.integer "actual_conversation"
+    t.float "win_rate"
+    t.float "commissions"
+    t.float "bonus"
+    t.float "total_payout"
+    t.uuid "wolf_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

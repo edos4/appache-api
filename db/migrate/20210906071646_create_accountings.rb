@@ -1,4 +1,4 @@
-class CreateAccountings < ActiveRecord::Migration[6.1]
+class CreateAccountings < ActiveRecord::Migration[6.0]
   def change
     create_table :accountings do |t|
       t.string :firstname

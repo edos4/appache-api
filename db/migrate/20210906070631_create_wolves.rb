@@ -1,4 +1,4 @@
-class CreateWolves < ActiveRecord::Migration[6.1]
+class CreateWolves < ActiveRecord::Migration[6.0]
   def change
     create_table :wolves do |t|
       t.string :firstname

@@ -1,4 +1,4 @@
-class CreateStaffs < ActiveRecord::Migration[6.1]
+class CreateStaffs < ActiveRecord::Migration[6.0]
   def change
     create_table :staffs, id: :uuid do |t|
       t.string :firstname

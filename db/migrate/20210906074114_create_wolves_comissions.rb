@@ -1,4 +1,4 @@
-class CreateWolvesComissions < ActiveRecord::Migration[6.1]
+class CreateWolvesComissions < ActiveRecord::Migration[6.0]
   def change
     create_table :wolves_comissions do |t|
       t.integer :total_calls

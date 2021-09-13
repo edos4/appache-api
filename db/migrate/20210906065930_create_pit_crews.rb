@@ -1,4 +1,4 @@
-class CreatePitCrews < ActiveRecord::Migration[6.1]
+class CreatePitCrews < ActiveRecord::Migration[6.0]
   def change
     create_table :pit_crews do |t|
       t.string :firstname
