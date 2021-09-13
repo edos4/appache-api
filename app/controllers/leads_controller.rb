@@ -11,52 +11,32 @@ class LeadsController < ApplicationController
 
   # GET /leads/1 or /leads/1.json
   def show
-  end
-
-  # GET /leads/new
-  def new
-    @lead = Lead.new
-  end
-
-  # GET /leads/1/edit
-  def edit
+    render json: @lead
   end
 
   # POST /leads or /leads.json
   def create
     @lead = Lead.new(lead_params)
 
-    respond_to do |format|
-      if @lead.save
-        format.html { redirect_to @lead, notice: "Lead was successfully created." }
-        format.json { render :show, status: :created, location: @lead }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
-      end
+    if @lead.save
+      render json: @lead, status: :created, location: @lead
+    else
+      render json: @lead.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /leads/1 or /leads/1.json
   def update
-    respond_to do |format|
-      if @lead.update(lead_params)
-        format.html { redirect_to @lead, notice: "Lead was successfully updated." }
-        format.json { render :show, status: :ok, location: @lead }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
-      end
+    if @lead.update(lead_params)
+      render json: @lead
+    else
+      render json: @lead.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /leads/1 or /leads/1.json
   def destroy
     @lead.destroy
-    respond_to do |format|
-      format.html { redirect_to leads_url, notice: "Lead was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   def lead_signup

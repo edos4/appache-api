@@ -4,56 +4,37 @@ class PitCrewsController < ApplicationController
   # GET /pit_crews or /pit_crews.json
   def index
     @pit_crews = PitCrew.all
+    render json: @pit_crews
   end
 
   # GET /pit_crews/1 or /pit_crews/1.json
   def show
-  end
-
-  # GET /pit_crews/new
-  def new
-    @pit_crew = PitCrew.new
-  end
-
-  # GET /pit_crews/1/edit
-  def edit
+    render json: @pit_crew
   end
 
   # POST /pit_crews or /pit_crews.json
   def create
     @pit_crew = PitCrew.new(pit_crew_params)
 
-    respond_to do |format|
-      if @pit_crew.save
-        format.html { redirect_to @pit_crew, notice: "Pit crew was successfully created." }
-        format.json { render :show, status: :created, location: @pit_crew }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @pit_crew.errors, status: :unprocessable_entity }
-      end
+    if @pit_crew.save
+      render json: @pit_crew, status: :created, location: @pit_crew
+    else
+      render json: @pit_crew.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /pit_crews/1 or /pit_crews/1.json
   def update
-    respond_to do |format|
-      if @pit_crew.update(pit_crew_params)
-        format.html { redirect_to @pit_crew, notice: "Pit crew was successfully updated." }
-        format.json { render :show, status: :ok, location: @pit_crew }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @pit_crew.errors, status: :unprocessable_entity }
-      end
+    if @pit_crew.update(pit_crew_params)
+      render json: @pit_crew
+    else
+      render json: @pit_crew.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /pit_crews/1 or /pit_crews/1.json
   def destroy
     @pit_crew.destroy
-    respond_to do |format|
-      format.html { redirect_to pit_crews_url, notice: "Pit crew was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private
