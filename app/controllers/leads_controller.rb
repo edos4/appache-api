@@ -11,7 +11,7 @@ class LeadsController < ApplicationController
       lastname: p['lastname'],
       email: p['email'],
       phone: p['phone'],
-      campaign_id: p['campaign_id'],
+      #campaign_id: p['campaign_id'],
       campaign_name: p['campaign_name'],
       ad_id: p['ad_id'],
       ad_name: p['ad_name'],
