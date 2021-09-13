@@ -1,0 +1,2 @@
+class WolvesComission < ApplicationRecord
+end
