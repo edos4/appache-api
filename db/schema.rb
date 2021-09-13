@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_12_194049) do
+ActiveRecord::Schema.define(version: 2021_09_13_033400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 2021_09_12_194049) do
     t.uuid "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "campaign_name"
+    t.uuid "campaign_id"
+    t.string "ad_name"
+    t.string "ad_id"
+    t.string "adset_name"
+    t.string "platform"
+    t.boolean "is_organic", default: false
+    t.string "integrately_id"
   end
 
   create_table "pit_crews", force: :cascade do |t|
