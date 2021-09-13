@@ -10,7 +10,7 @@ class StudioOwnersController < ApplicationController
 
   # GET /studio_owners/1 or /studio_owners/1.json
   def show
-    render json: @studio
+    render json: @studio_owner
   end
 
   # POST /studio_owners or /studio_owners.json
