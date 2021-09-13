@@ -73,6 +73,6 @@ class LeadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lead_params
-      params.require(:lead).permit(:ad_name, :ad_id, :adset_name, :platform, :is_organic, :integrately_id, :campaign_id, :campaign_name, :source, :firstname, :lastname, :phone, :status, :notes, :assigned, :sale_date, :deal, :deal_status, :deal_date, :lbe_price, :lbe_start_date, :user_id)
+      params.require(:lead).permit(:email, :ad_name, :ad_id, :adset_name, :platform, :is_organic, :integrately_id, :campaign_id, :campaign_name, :source, :firstname, :lastname, :phone, :status, :notes, :assigned, :sale_date, :deal, :deal_status, :deal_date, :lbe_price, :lbe_start_date, :user_id)
     end
 end
