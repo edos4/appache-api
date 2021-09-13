@@ -1,6 +1,28 @@
 class LeadsController < ApplicationController
-  before_action :authenticate_user!, except: [:lead_signup, :create]
+  before_action :authenticate_user!, except: [:lead_signup, :create, :lead_campaign]
   before_action :set_lead, only: %i[ show edit update destroy ]
+
+  def lead_campaign
+    puts params.inspect
+
+    p = params
+    lead = Lead.create(
+      firstname: p['firstname'],
+      lastname: p['lastname'],
+      email: p['email'],
+      phone: p['phone'],
+      campaign_id: p['campaign_id'],
+      campaign_name: p['campaign_name'],
+      ad_id: p['ad_id'],
+      ad_name: p['ad_name'],
+      adset_name: p['adset_name'],
+      platform: p['platform'],
+      is_organic: p['is_organic'],
+      integrately_id: p['integrately_id'],
+    )
+
+    render json: lead
+  end
 
   # GET /leads or /leads.json
   def index
@@ -51,6 +73,6 @@ class LeadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lead_params
-      params.require(:lead).permit(:source, :firstname, :lastname, :phone, :status, :notes, :assigned, :sale_date, :deal, :deal_status, :deal_date, :lbe_price, :lbe_start_date, :user_id)
+      params.require(:lead).permit(:ad_name, :ad_id, :adset_name, :platform, :is_organic, :integrately_id, :campaign_id, :campaign_name, :source, :firstname, :lastname, :phone, :status, :notes, :assigned, :sale_date, :deal, :deal_status, :deal_date, :lbe_price, :lbe_start_date, :user_id)
     end
 end
