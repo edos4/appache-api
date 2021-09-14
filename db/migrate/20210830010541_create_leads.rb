@@ -15,7 +15,15 @@ class CreateLeads < ActiveRecord::Migration[6.0]
       t.float :lbe_price
       t.date :lbe_start_date
       t.uuid :user_id
-
+      t.string :campaign_name
+      t.uuid :campaign_id
+      t.string :ad_name
+      t.string :ad_id
+      t.string :adset_name
+      t.string :platform
+      t.boolean :is_organic, default: false
+      t.string :integrately_id
+      t.string :email
       t.timestamps
     end
   end

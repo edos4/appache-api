@@ -1,6 +1,6 @@
 class CreateAccountings < ActiveRecord::Migration[6.0]
   def change
-    create_table :accountings do |t|
+    create_table :accountings, id: :uuid do |t|
       t.string :firstname
       t.string :lastname
       t.uuid :user_id

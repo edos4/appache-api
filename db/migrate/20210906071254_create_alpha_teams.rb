@@ -1,6 +1,6 @@
 class CreateAlphaTeams < ActiveRecord::Migration[6.0]
   def change
-    create_table :alpha_teams do |t|
+    create_table :alpha_teams, id: :uuid do |t|
       t.string :firstname
       t.string :lastname
       t.uuid :user_id

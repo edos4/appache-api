@@ -16,7 +16,6 @@ class CampaignsController < ApplicationController
   # POST /campaigns or /campaigns.json
   def create
     @campaign = Campaign.new(campaign_params)
-
     if @campaign.save
       render json: @campaign, status: :created, location: @campaign
     else
@@ -26,7 +25,7 @@ class CampaignsController < ApplicationController
 
   # PATCH/PUT /campaigns/1 or /campaigns/1.json
   def update
-    if @campaign.update(student_params)
+    if @campaign.update(campaign_params)
       render json: @campaign
     else
       render json: @campaign.errors, status: :unprocessable_entity

@@ -1,6 +1,6 @@
 class CreateWolves < ActiveRecord::Migration[6.0]
   def change
-    create_table :wolves do |t|
+    create_table :wolves, id: :uuid do |t|
       t.string :firstname
       t.string :lastname
       t.uuid :user_id

@@ -1,6 +1,6 @@
 class CreateWolvesComissions < ActiveRecord::Migration[6.0]
   def change
-    create_table :wolves_comissions do |t|
+    create_table :wolves_comissions, id: :uuid do |t|
       t.integer :total_calls
       t.integer :actual_conversation
       t.float :win_rate

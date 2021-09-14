@@ -1,6 +1,6 @@
 class CreateStudioManagers < ActiveRecord::Migration[6.0]
   def change
-    create_table :studio_managers do |t|
+    create_table :studio_managers, id: :uuid do |t|
       t.string :firstname
       t.string :lastname
       t.uuid :studio_id

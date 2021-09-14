@@ -1,6 +1,6 @@
 class CreateCampaigns < ActiveRecord::Migration[6.0]
   def change
-    create_table :campaigns do |t|
+    create_table :campaigns, id: :uuid do |t|
       t.string :name
       t.text :details
       t.string :status

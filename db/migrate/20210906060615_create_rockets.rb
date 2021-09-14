@@ -1,6 +1,6 @@
 class CreateRockets < ActiveRecord::Migration[6.0]
   def change
-    create_table :rockets do |t|
+    create_table :rockets, id: :uuid do |t|
       t.string :firstname
       t.string :lastname
       t.uuid :user_id
