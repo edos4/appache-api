@@ -1,6 +1,6 @@
 class CreatePitCrews < ActiveRecord::Migration[6.0]
   def change
-    create_table :pit_crews do |t|
+    create_table :pit_crews, id: :uuid do |t|
       t.string :firstname
       t.string :lastname
       t.uuid :user_id
