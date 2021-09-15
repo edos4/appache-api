@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :pit_crews
   resources :campaigns
   resources :rockets
+  resources :gsheet
   get '/signup', to: 'leads#lead_signup'
   get '/studio_signup', to: 'studios#studio_signup'
 
