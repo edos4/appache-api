@@ -33,7 +33,7 @@ class GsheetController < ApplicationController
     # Prints the names and majors of students in a sample spreadsheet:
     # https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
     spreadsheet_id = "1spLiW9AzfYp3K4LBBbGZzuWXRBoYfnY1eqn5lfC_3NY"
-    range = "Dashboard(Hawkeye)!#{params[:start_cell]}:#{params[:end_cell]}"
+    range = "EagleEye!#{params[:start_cell]}:#{params[:end_cell]}"
     response = service.get_spreadsheet_values spreadsheet_id, range
     @data << "No data found." if response.values.empty?
     response.values.each do |row|
