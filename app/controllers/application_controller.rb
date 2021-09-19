@@ -9,6 +9,10 @@ class ApplicationController < ActionController::API
     render plain: 'pong'
   end
 
+  def me
+    render json: current_user.present? ? {data: current_user}.to_json : {data: "Access Denied"} 
+  end
+
   def render_resource(resource)
     if resource.errors.empty?
       render json: resource
