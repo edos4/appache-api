@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   match 'auth_ping' => 'application#auth_ping', via: :all
   match '/me' => 'application#me', via: :post
 
+  match '/import_studios_overview' => 'studios#import_studios_overview', via: :get
+
   resources :wolves_comissions
   resources :accountings
   resources :alpha_teams

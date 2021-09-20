@@ -28,7 +28,6 @@ gem 'rack-cors'
 # App-Specific
 gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem 'google-api-client'
-gem "google_drive"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

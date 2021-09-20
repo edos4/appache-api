@@ -1,5 +1,5 @@
 class StudiosController < ApplicationController
-  before_action :authenticate_user!, except: [:studio_signup, :create]
+  before_action :authenticate_user!, except: [:studio_signup, :create, :import_studios_overview]
   before_action :set_studio, only: %i[ show edit update destroy ]
 
   # GET /studios or /studios.json
@@ -7,6 +7,20 @@ class StudiosController < ApplicationController
     @studios = Studio.all
 
     render json: @studios
+  end
+
+  def import_studios_overview
+    @data = GsheetService.call("1YK0SQvNXWHEoSMMG-7V6wl_3XKz-44UrH4JoL7bJXKk", "Studios Overview", "", "")
+    @data.shift
+    @data.shift
+
+    @data.each do |d|
+      Studio.create(
+        name: d[0],
+        address: d[4],
+        email: d[7]
+      )
+    end
   end
 
   # GET /studios/1 or /studios/1.json
