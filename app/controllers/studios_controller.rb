@@ -10,16 +10,20 @@ class StudiosController < ApplicationController
   end
 
   def import_studios_overview
+    Studio.destroy_all
     @data = GsheetService.call("1YK0SQvNXWHEoSMMG-7V6wl_3XKz-44UrH4JoL7bJXKk", "Studios Overview", "", "")
     @data.shift
     @data.shift
 
+    byebug
     @data.each do |d|
-      Studio.create(
+      studio = Studio.create(
         name: d[0],
         address: d[4],
         email: d[7]
       )
+
+      
     end
   end
 

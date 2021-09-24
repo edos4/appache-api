@@ -22,10 +22,6 @@ Rails.application.routes.draw do
 
   resources :leads
   resources :staffs
-  # devise_for :users, path: '', 
-  #   path_names: { sign_in: '/sign_in', sign_out: '/sign_out'}, 
-  #   :controllers => {:sessions => "users/sessions", 
-  #   :registrations => "users/registrations"}
   resources :studios
   resources :studio_managers
   resources :studio_owners
