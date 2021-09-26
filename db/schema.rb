@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_021212) do
+ActiveRecord::Schema.define(version: 2021_09_26_230516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_021212) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "campaigns", force: :cascade do |t|
+  create_table "campaigns", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.text "details"
     t.string "status"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_021212) do
     t.string "platform"
     t.boolean "is_organic", default: false
     t.string "integrately_id"
+    t.string "email"
   end
 
   create_table "pit_crews", force: :cascade do |t|
@@ -159,6 +160,11 @@ ActiveRecord::Schema.define(version: 2021_09_20_021212) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "studio_leads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.uuid "studio_id"
+  end
+
   create_table "studio_managers", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
@@ -186,6 +192,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_021212) do
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "campaign_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

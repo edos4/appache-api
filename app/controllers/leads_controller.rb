@@ -24,6 +24,12 @@ class LeadsController < ApplicationController
     render json: lead
   end
 
+  def bulk_delete
+    Lead.where(id: params[:lead][:ids]).destroy_all
+
+    render json: {data: "Success"}.to_json 
+  end
+
   # GET /leads or /leads.json
   def index
     @leads = Lead.all

@@ -11,19 +11,25 @@ class StudiosController < ApplicationController
 
   def import_studios_overview
     Studio.destroy_all
+    Campaign.destroy_all
+    c = []
+
     @data = GsheetService.call("1YK0SQvNXWHEoSMMG-7V6wl_3XKz-44UrH4JoL7bJXKk", "Studios Overview", "", "")
     @data.shift
     @data.shift
 
-    byebug
     @data.each do |d|
-      studio = Studio.create(
+      studio = Studio.create!(
         name: d[0],
         address: d[4],
         email: d[7]
       )
 
-      
+      #lead = Lead.find_or_create_by(email: "pday@f45training.com.au", name: d[4]) not all leads have email
+
+      campaign = Campaign.find_or_create_by!(name: d[18])
+
+      studio.update!(campaign_id: campaign.id)
     end
   end
 
