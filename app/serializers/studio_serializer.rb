@@ -1,5 +1,5 @@
 class StudioSerializer < ActiveModel::Serializer
-  attributes :id, :email, :address, :campaign
+  attributes :id, :email, :address, :created_at, :updated_at, :campaign
 
   def campaign
     {

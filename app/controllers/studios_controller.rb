@@ -4,7 +4,7 @@ class StudiosController < ApplicationController
 
   # GET /studios or /studios.json
   def index
-    @studios = Studio.all
+    @studios = Studio.all.order(created_at: :desc, updated_at: :desc)
 
     render json: @studios
   end
@@ -69,6 +69,8 @@ class StudiosController < ApplicationController
         studio_id: @studio.id,
         user_id: owner_user.id
       )
+
+      studio.update!(studio_manager_id: studio_manager, studio_owner_id: studio_owner.id)
 
       render json: @studio
     else
