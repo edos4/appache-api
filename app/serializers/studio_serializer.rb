@@ -3,8 +3,8 @@ class StudioSerializer < ActiveModel::Serializer
 
   def campaign
     {
-      id: object.campaign.id rescue nil,
-      name: object.campaign.name rescue nil
+      id: (object.campaign.id rescue nil),
+      name: (object.campaign.name rescue nil)
     }
   end
 end
