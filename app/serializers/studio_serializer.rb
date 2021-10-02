@@ -1,5 +1,5 @@
 class StudioSerializer < ActiveModel::Serializer
-  attributes :id, :email, :address, :created_at, :updated_at, :campaign, :studio_manager, :studio_owner
+  attributes :name, :id, :email, :address, :created_at, :updated_at, :campaign, :studio_manager, :studio_owner
 
   def campaign
     {
@@ -10,13 +10,15 @@ class StudioSerializer < ActiveModel::Serializer
 
   def studio_manager
     {
-      data: object.studio_manager
+      data: (object.studio_manager rescue nil),
+      user: (object.studio_manager.user rescue nil)
     }
   end
 
   def studio_owner
     {
-      data: object.studio_owner
+      data: (object.studio_owner rescue nil),
+      user: (object.studio_manager.user rescue nil)
     }
   end
 end
