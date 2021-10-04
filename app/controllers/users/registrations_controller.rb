@@ -19,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     build_resource(sign_up_params)
     resource.save
+    resource.send_reset_password_instructions
     render_resource(resource)
   end
 

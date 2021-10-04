@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+
+  devise_scope :user do 
+    match '/reset', to: 'users/passwords#reset', via: :post
+  end
+
   devise_for :users, 
-    controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+    controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   match 'ping' => 'application#ping', via: :all
   match 'auth_ping' => 'application#auth_ping', via: :all
   match '/me' => 'application#me', via: :post
+
+  #staff
+  match '/import_team' => 'staffs#import_team', via: :get
 
   #studios
   match '/import_studios_overview' => 'studios#import_studios_overview', via: :get
