@@ -15,8 +15,14 @@ class StaffsController < ApplicationController
   # POST /staffs or /staffs.json
   def create
     @staff = Staff.new(staff_params)
-
     if @staff.save
+      user = User.create!(
+        email: params["staff"]["email"],
+        password: "12312asasdwq@2132124a"
+      )
+
+      @staff.update(user_id: user.id)
+
       render json: @staff, status: :created, location: @staff
     else
       render json: @staff.errors, status: :unprocessable_entity
@@ -76,6 +82,6 @@ class StaffsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def staff_params
-      params.require(:staff).permit(:firstname, :lastname, :user_id, :date_hired, :department, :position, :address, :meeting_link, :birthday, :last_day, :pay_rate, :total_earned, :employment_contract)
+      params.require(:staff).permit(:firstname, :lastname, :user_id, :date_hired, :department, :position, :address, :meeting_link, :birthday, :last_day, :pay_rate, :total_earned, :employment_contract, :title, :job_description, :email, :contact_number, :status)
     end
 end
