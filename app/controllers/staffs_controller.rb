@@ -45,11 +45,11 @@ class StaffsController < ApplicationController
 
   def import_team
     Staff.all.each do |s|
-      s.user.destroy
+      s.user.destroy if s.user.present?
       s.destroy
     end
 
-    @data = GsheetService.call("1YK0SQvNXWHEoSMMG-7V6wl_3XKz-44UrH4JoL7bJXKk", "Appache-test", "", "")
+    @data = GsheetService.call("1YK0SQvNXWHEoSMMG-7V6wl_3XKz-44UrH4JoL7bJXKk", "Team Info - Apache", "", "")
     @data.shift
     @data.each do |d|
       user = User.create!(

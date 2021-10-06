@@ -19,13 +19,26 @@ class StudiosController < ApplicationController
     @data.shift
 
     @data.each do |d|
+      assigned_rocket = (Staff.find_by(firstname: d[13]) rescue nil)
+      assigned_pitcrew = (Staff.find_by(firstname: d[14]) rescue nil)
+      assigned_wolf = (Staff.find_by(firstname: d[15]) rescue nil)
       studio = Studio.create!(
         name: d[0],
         address: d[4],
-        email: d[7]
+        email: d[7],
+        services_offered: d[11],
+        assigned_rocket: assigned_rocket
+        assigned_pitcrew: assigned_pitcrew
+        assigned_wolf: assigned_wolf
       )
 
-      #lead = Lead.find_or_create_by(email: "pday@f45training.com.au", name: d[4]) not all leads have email
+      if d[5].present?  
+        lead = Lead.find_or_create_by(
+          email: "pday@f45training.com.au", 
+          name: d[4]
+          studio_id: studio.id
+        )
+      end
 
       campaign = Campaign.find_or_create_by!(name: d[18])
 

@@ -8,7 +8,9 @@ class User < ApplicationRecord
   after_create :send_reset
 
   def send_reset
-    self.send_reset_password_instructions
+    if ENV["disable_email"] == "true"
+      self.send_reset_password_instructions
+    end
   end
 
   has_one :staff

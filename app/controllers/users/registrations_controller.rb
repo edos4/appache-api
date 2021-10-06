@@ -19,7 +19,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     build_resource(sign_up_params)
     resource.save
-    resource.send_reset_password_instructions
+    if ENV["disable_email"] == "true"
+      resource.send_reset_password_instructions
+    end
     render_resource(resource)
   end
 
