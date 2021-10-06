@@ -27,8 +27,8 @@ class StudiosController < ApplicationController
         address: d[4],
         email: d[7],
         services_offered: d[11],
-        assigned_rocket: assigned_rocket
-        assigned_pitcrew: assigned_pitcrew
+        assigned_rocket: assigned_rocket,
+        assigned_pitcrew: assigned_pitcrew,
         assigned_wolf: assigned_wolf
       )
 
