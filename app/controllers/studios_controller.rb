@@ -35,7 +35,7 @@ class StudiosController < ApplicationController
       if d[5].present?  
         lead = Lead.find_or_create_by(
           email: "pday@f45training.com.au", 
-          name: d[4]
+          name: d[4],
           studio_id: studio.id
         )
       end
