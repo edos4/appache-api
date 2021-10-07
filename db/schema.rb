@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_05_015815) do
+ActiveRecord::Schema.define(version: 2021_10_07_122719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_10_05_015815) do
     t.string "cpl"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "fb_campaign_id"
   end
 
   create_table "leads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_10_05_015815) do
     t.string "integrately_id"
     t.string "email"
     t.uuid "studio_id"
+    t.string "fb_campaign_id"
   end
 
   create_table "pit_crews", force: :cascade do |t|
@@ -140,12 +142,12 @@ ActiveRecord::Schema.define(version: 2021_10_05_015815) do
     t.string "firstname"
     t.string "lastname"
     t.uuid "user_id"
-    t.date "date_hired"
+    t.string "date_hired"
     t.string "department"
     t.string "position"
     t.string "address"
     t.string "meeting_link"
-    t.date "birthday"
+    t.string "birthday"
     t.date "last_day"
     t.float "pay_rate"
     t.float "total_earned"
@@ -207,6 +209,7 @@ ActiveRecord::Schema.define(version: 2021_10_05_015815) do
     t.uuid "assigned_rocket"
     t.uuid "assigned_pitcrew"
     t.uuid "assigned_wolf"
+    t.string "account_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
