@@ -10,7 +10,13 @@ class ApplicationController < ActionController::API
   end
 
   def me
-    render json: current_user.present? ? {data: current_user}.to_json : {data: "Access Denied"} 
+    render json: current_user.present? ? {data: {
+        id: current_user.id,
+        email: current_user.email,
+        created_at: current_user.created_at,
+        updated_at: current_user.updated_at,
+        role: (current_user.staff.role rescue nil)
+    }}.to_json : {data: "Access Denied"} 
   end
 
   def render_resource(resource)
