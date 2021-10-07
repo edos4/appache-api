@@ -28,7 +28,11 @@ Rails.application.routes.draw do
   resources :alpha_teams
   resources :wolves
   resources :pit_crews
-  resources :campaigns
+  resources :campaigns do
+    member do
+      get :leads
+    end
+  end
   resources :rockets
   resources :gsheet
   get '/studio_signup', to: 'studios#studio_signup'

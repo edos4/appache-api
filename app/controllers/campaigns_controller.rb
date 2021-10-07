@@ -1,5 +1,9 @@
 class CampaignsController < ApplicationController
-  before_action :set_campaign, only: %i[ show edit update destroy ]
+  before_action :set_campaign, only: %i[ show edit update destroy leads]
+
+  def leads
+    render json: @campaign.leads
+  end
 
   # GET /campaigns or /campaigns.json
   def index
