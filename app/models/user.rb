@@ -14,4 +14,8 @@ class User < ApplicationRecord
   end
 
   has_one :staff
+
+  def role
+    self.studio_owner rescue false || self.staff.role rescue nil
+  end
 end

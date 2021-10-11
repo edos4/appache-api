@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
   before_action :authenticate_user!, only: [:auth_ping]
+  include Pundit
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def ping
     render plain: 'pong'
@@ -38,5 +40,12 @@ class ApplicationController < ActionController::API
         }
       ]
     }, status: :bad_request
+  end
+
+  private
+
+  def user_not_authorized
+    # flash[:alert] = "You are not authorized to perform this action."
+    render json: {message: "Access Denied"}, :status => :forbidden
   end
 end
