@@ -49,6 +49,6 @@ class CampaignsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def campaign_params
-      params.require(:campaign).permit(:name, :details, :status, :attachments, :start_date, :end_date, :tags, :total_spent, :fb_leads, :cpl)
+      params.require(:campaign).permit(:name, :details, :status, :attachments, :start_date, :end_date, :tags, :total_spent, :fb_leads, :cpl, :fb_campaign_id)
     end
 end
