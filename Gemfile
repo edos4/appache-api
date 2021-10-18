@@ -30,6 +30,7 @@ gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem 'google-api-client'
 gem 'active_model_serializers'
 gem "pundit"
+gem "pry"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

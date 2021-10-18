@@ -14,8 +14,14 @@ class User < ApplicationRecord
   end
 
   has_one :staff
+  has_one :studio_owner
 
   def role
-    self.studio_owner rescue false || self.staff.role rescue nil
+    role = ""
+    if self.studio_owner.present?
+      role = "Studio Owner"
+    elsif self.staff.present?
+      role = self.staff.role
+    end
   end
 end

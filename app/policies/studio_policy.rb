@@ -8,7 +8,8 @@ class StudioPolicy < ApplicationPolicy
 
   def index?
     [
-      'admin'
+      'admin',
+      'Studio Owner'
     ].include?(user.role)
   end
 
@@ -32,13 +33,15 @@ class StudioPolicy < ApplicationPolicy
 
   def update?
     [
-      'admin'
+      'admin',
+      'Studio Owner'
     ].include?(user.role)
   end
 
   def edit?
     [
-      'admin'
+      'admin',
+      'Studio Owner'
     ].include?(user.role)
   end
 

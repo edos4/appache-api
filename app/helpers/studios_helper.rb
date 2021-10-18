@@ -1,10 +1,10 @@
 module StudiosHelper
-  def self.studios_list(staff, branch_id, status)
-    if staff.role == 'RFD-Records Incharge 1-A'
-      vehicles = Vehicle.select{|x| x.branch.island_group == 'Mindanao'}
-    else
-      vehicles = Vehicle.select{|x| x}
+  def self.studios_list(user)
+    if user.role == 'Studio Owner'
+      studios = user.studio_owner.studio
+    elsif user.role == 'admin'
+      studios = Studio.all.order(created_at: :desc, updated_at: :desc)
     end
-    vehicles
+    studios
   end
 end

@@ -12,9 +12,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    puts "*****display first"
     super
-    puts "******display pa"
   end
 
   # DELETE /resource/sign_out

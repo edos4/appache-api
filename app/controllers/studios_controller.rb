@@ -5,7 +5,8 @@ class StudiosController < ApplicationController
   # GET /studios or /studios.json
   def index
     authorize Studio, :index?
-    @studios = Studio.all.order(created_at: :desc, updated_at: :desc)
+    #@studios = Studio.all.order(created_at: :desc, updated_at: :desc)
+    @studios = StudiosHelper.studios_list(current_user)
 
     render json: @studios
   end
@@ -33,32 +34,36 @@ class StudiosController < ApplicationController
         assigned_wolf: assigned_wolf
       )
 
-      if d[5].present?  
-        if d[5].include?(",")
-          owners = d[5].split(",")
-          unless d[6].split(",").blank?
-            emails = d[6].split(",")
-          else
-            emails = d[7]
-          end
+      # owner email = G(6) 
+        # if no G(6), use H(7) 
+      # if d[5].present? # has Lead/s
+      #   if d[5].include?(",") # multiple Lead/s
+      #     owners = d[5].split(",")
+      #     unless d[6].split(",").blank?
+      #       emails = d[6].split(",")
+      #     else
+      #       emails = d[7]
+      #     end
 
-          # ctr = 0
-          # emails.each do |o|
-          #   user = User.create!(
-          #     email: o,
-          #     password: "12312asasdwq@2132124a"
-          #   )
+      #     # ctr = 0
+      #     # emails.each do |o|
+      #     #   user = User.create!(
+      #     #     email: o,
+      #     #     password: "12312asasdwq@2132124a"
+      #     #   )
 
-          #   StudioOwner.create
+      #     #   StudioOwner.create
             
-          # end
-        end
-        # lead = Lead.find_or_create_by(
-        #   email: "pday@f45training.com.au", 
-        #   name: d[4],
-        #   studio_id: studio.id
-        # )
-      end
+      #     # end
+      #   end
+      #   # lead = Lead.find_or_create_by(
+      #   #   email: "pday@f45training.com.au", 
+      #   #   name: d[4],
+      #   #   studio_id: studio.id
+      #   # )
+      # else #if no F (Lead/s)
+
+      # end
 
       campaign = Campaign.find_or_create_by!(name: d[18])
 
