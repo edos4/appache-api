@@ -39,7 +39,11 @@ Rails.application.routes.draw do
 
   resources :leads
   resources :staffs
-  resources :studios
+  resources :studios do
+    member do
+      get :leads
+    end
+  end
   resources :studio_managers
   resources :studio_owners
   

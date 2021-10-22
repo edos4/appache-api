@@ -12,13 +12,27 @@ class ApplicationController < ActionController::API
   end
 
   def me
-    render json: current_user.present? ? {data: {
+    details = current_user.present? ? {data: {
         id: current_user.id,
         email: current_user.email,
         created_at: current_user.created_at,
         updated_at: current_user.updated_at,
         role: (current_user.staff.role rescue nil)
-    }}.to_json : {data: "Access Denied"} 
+    }}.to_json : {data: "Access Denied"}
+
+    classes = [Studio]     
+
+    permissions = { }                             
+
+    classes.each do |clazz|                       
+      policy =  Pundit.policy(current_user, clazz)      
+      policy.public_methods(false).sort.each do |m|      
+        result = policy.send m                    
+        permissions["#{clazz}.#{m}"] = result     
+      end
+    end 
+
+    render json: {details: details, permissions: permissions}
   end
 
   def render_resource(resource)

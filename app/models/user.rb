@@ -23,5 +23,6 @@ class User < ApplicationRecord
     elsif self.staff.present?
       role = self.staff.role
     end
+    role
   end
 end

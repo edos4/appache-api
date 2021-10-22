@@ -1,6 +1,6 @@
 class StudiosController < ApplicationController
   before_action :authenticate_user!, except: [:studio_signup, :create, :import_studios_overview]
-  before_action :set_studio, only: %i[ show edit update destroy ]
+  before_action :set_studio, only: %i[ show edit update destroy leads]
 
   # GET /studios or /studios.json
   def index
@@ -9,6 +9,13 @@ class StudiosController < ApplicationController
     @studios = StudiosHelper.studios_list(current_user)
 
     render json: @studios
+  end
+
+  def leads
+    #byebug
+    @leads = @studio.studio_leads.to_json
+
+    render json: @leads
   end
 
   def import_studios_overview
