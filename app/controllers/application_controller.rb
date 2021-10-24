@@ -13,22 +13,22 @@ class ApplicationController < ActionController::API
 
   def me
     details = current_user.present? ? {data: {
-        id: current_user.id,
-        email: current_user.email,
-        created_at: current_user.created_at,
-        updated_at: current_user.updated_at,
-        role: (current_user.staff.role rescue nil)
-    }}.to_json : {data: "Access Denied"}
+      id: current_user.id,
+      email: current_user.email,
+      created_at: current_user.created_at,
+      updated_at: current_user.updated_at,
+      role: (current_user.staff.role rescue nil)
+    }} : {data: "Access Denied"}
 
-    classes = [Studio]     
+    classes = [Studio, Campaign]     
 
     permissions = { }                             
 
     classes.each do |clazz|                       
       policy =  Pundit.policy(current_user, clazz)      
       policy.public_methods(false).sort.each do |m|      
-        result = policy.send m                    
-        permissions["#{clazz}.#{m}"] = result     
+        result = policy.send m                   
+        permissions["#{clazz}.#{m}"] = result if m != :record     
       end
     end 
 

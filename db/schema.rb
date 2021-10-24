@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_073519) do
+ActiveRecord::Schema.define(version: 2021_10_24_220034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "accountings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "accountings", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
     t.uuid "user_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_073519) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "alpha_teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "alpha_teams", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
     t.uuid "user_id"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 2021_10_22_073519) do
     t.float "lbe_price"
     t.date "lbe_start_date"
     t.uuid "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "campaign_name"
     t.uuid "campaign_id"
     t.string "ad_name"
@@ -95,10 +97,9 @@ ActiveRecord::Schema.define(version: 2021_10_22_073519) do
     t.boolean "is_organic", default: false
     t.string "integrately_id"
     t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.uuid "studio_id"
     t.string "fb_campaign_id"
+    t.string "addset_id"
   end
 
   create_table "pit_crews", force: :cascade do |t|
@@ -120,7 +121,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_073519) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "rockets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "rockets", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
     t.uuid "user_id"
@@ -175,7 +176,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_073519) do
     t.uuid "studio_id"
   end
 
-  create_table "studio_managers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "studio_managers", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
     t.uuid "studio_id"
@@ -184,7 +185,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_073519) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "studio_owners", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "studio_owners", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
     t.uuid "user_id"
@@ -211,6 +212,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_073519) do
     t.uuid "assigned_pitcrew"
     t.uuid "assigned_wolf"
     t.string "account_id"
+    t.string "fb_account_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -229,7 +231,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_073519) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "wolves", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "wolves", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
     t.uuid "user_id"
@@ -248,7 +250,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_073519) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "wolves_comissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "wolves_comissions", force: :cascade do |t|
     t.integer "total_calls"
     t.integer "actual_conversation"
     t.float "win_rate"
