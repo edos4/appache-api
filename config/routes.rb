@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   #leads
   match '/import_studios_overview' => 'studios#import_studios_overview', via: :get
   get '/signup', to: 'leads#lead_signup'
+
+  #From zapier
   post '/lead_campaign', to: 'leads#lead_campaign'
+  
   post '/leads/bulk_delete', to: 'leads#bulk_delete'
 
   resources :wolves_comissions
