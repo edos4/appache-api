@@ -1,7 +1,7 @@
 puts "Seeding User and Personnel"
-if User.where(email: "admin@example.com").blank?
+if User.where(email: "admin@geron1mo.com").blank?
   user = User.create!(
-      email: "admin@example.com",
+      email: "admin@geron1mo.com",
       password: "password!!",
       password_confirmation: "password!!"
     )
@@ -17,9 +17,9 @@ if User.where(email: "admin@example.com").blank?
   )
 end
 
-if User.where(email: "staff@example.com").blank?
+if User.where(email: "staff@geron1mo.com").blank?
   user = User.create!(
-      email: "staff@example.com",
+      email: "staff@geron1mo.com",
       password: "password!!",
       password_confirmation: "password!!"
     )
@@ -35,9 +35,9 @@ if User.where(email: "staff@example.com").blank?
   )
 end
 
-if User.where(email: "rocket@example.com").blank?
+if User.where(email: "rocket@geron1mo.com").blank?
   user = User.create!(
-      email: "rocket@example.com",
+      email: "rocket@geron1mo.com",
       password: "password!!",
       password_confirmation: "password!!"
     )
@@ -53,9 +53,9 @@ if User.where(email: "rocket@example.com").blank?
   )
 end
 
-if User.where(email: "wolf@example.com").blank?
+if User.where(email: "wolf@geron1mo.com").blank?
   user = User.create!(
-      email: "wolf@example.com",
+      email: "wolf@geron1mo.com",
       password: "password!!",
       password_confirmation: "password!!"
     )
